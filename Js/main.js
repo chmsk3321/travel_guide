@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
 
     // header
-    const headerState = (this.window.scrollY !== 0)
+    const headerState = ( this.window.scrollY !== 0 )
         ? $('header').addClass('scrolled')
         : $('header').removeClass('scrolled');
 
@@ -10,32 +10,32 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const currentY = this.window.scrollY;
 
-        const headerState = (this.window.scrollY !== 0)
+        const headerState = ( this.window.scrollY !== 0 )
             ? $('header').addClass('scrolled')
             : $('header').removeClass('scrolled');
 
-        $('#visual').css('background-color', `rgba(0, 0, 0, ${(currentY / 1000) + .2})`);
+        $('#visual').css('background-color', `rgba(0, 0, 0, ${( currentY / 1000 ) + .2})`);
 
         // food scroll
         const foodContents = document.querySelector('.food_contents');
         const foodBoxes = document.querySelectorAll('.food_left > div');
         const foodRect = foodContents.getBoundingClientRect().top;
 
-        if (foodRect <= 60 && foodVaseValue === null) {
+        if ( foodRect <= 60 && foodVaseValue === null ) {
             foodVaseValue = currentY;
-        } else if (foodRect > 60 && foodVaseValue !== null) foodVaseValue = null;
+        } else if ( foodRect > 60 && foodVaseValue !== null ) foodVaseValue = null;
         
-        if (foodRect <= 60 && foodVaseValue !== null) {
+        if ( foodRect <= 60 && foodVaseValue !== null ) {
             const startPoint = currentY - foodVaseValue;
 
-            if (startPoint <= (foodContents.offsetHeight + 60)) {
+            if ( startPoint <= (foodContents.offsetHeight + 60) ) {
 
-                let order = Math.floor(startPoint / window.innerHeight);
-                const detail = startPoint - ((window.innerHeight) * order);
+                let order = Math.floor( startPoint / window.innerHeight );
+                const detail = startPoint - ( (window.innerHeight) * order );
 
-                if (order < foodBoxes.length) {
+                if ( order < foodBoxes.length ) {
                     foodBoxes[order].classList.add('scroll_show');
-                    if (detail >= (window.innerHeight * .5)) foodBoxes[order].classList.remove('scroll_show');
+                    if ( detail >= (window.innerHeight * .5) ) foodBoxes[order].classList.remove('scroll_show');
                 }
 
             }
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // attractions
     let getJson;
-    fetch("Js/place.json")
+    fetch( "Js/place.json" )
     .then((res) => {
         return res.json();
     })
